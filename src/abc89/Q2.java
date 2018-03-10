@@ -1,25 +1,51 @@
 package abc89;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+/**
+ *
+問題文
+日本では、3 月 3 日にひなあられという、色のついたお菓子をお供えする習慣があります。
 
+1 つの袋があり、ひなあられが N 個入っています。
+
+この袋には、桃色、白色、緑色の 3 種類か、桃色、白色、緑色、黄色の 4 種類のひなあられが入っていることが分かっています。
+
+桃色を P、白色を W、緑色を G、黄色を Y と表したとき、袋からひなあられを 1 粒ずつ取り出していったところ、i 番目に取り出したひなあられの色は Si でした。
+
+この袋に 3 種類のひなあられが入っていた場合は Three、4 種類のひなあられが入っていた場合は Four と出力してください。
+
+制約
+1≤N≤100
+Si は P か W か G か Y
+Si=P、Sj=W、Sk=G を満たす i,j,k が必ず存在する
+入力
+入力は以下の形式で標準入力から与えられる。
+
+N
+S1 S2 … SN
+ *
+ *
+ */
 public class Q2 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		// 整数の入力
+		// 文字列の入力
 		int N = sc.nextInt();
+		List<String> stock = new ArrayList<String>();
 
-		if (N % 3 == 0) {
-			System.out.println(N / 3);
-		} else {
-			if (N % 3 > 3) {
-				System.out.println((int)Math.ceil(N/3));
-			} else {
-				System.out.println((int)Math.floor(N/3));
+		for(int i=0; i < N; i++) {
+			String hinaarare = sc.next();
+			if (stock.contains(hinaarare) == false) {
+				stock.add(hinaarare);
 			}
 		}
-
-
-
+		if (stock.size() == 3) {
+			System.out.println("Three");
+		} else {
+			System.out.println("Four");
+		}
 	}
 }
